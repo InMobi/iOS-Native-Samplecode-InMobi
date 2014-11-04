@@ -102,7 +102,10 @@
     if ([url isFileURL] ) {
         load = NO;
     }
-    if (![url.scheme isEqualToString: @"http"] || ![url.scheme isEqualToString:@"https"]) {
+    if ([[url absoluteString] isEqualToString:@"about:blank"]) {
+        load = YES;
+    }
+    else if (![url.scheme isEqualToString:@"http"] && ![url.scheme isEqualToString:@"https"]) {
         load = NO;
     }
     return load;
